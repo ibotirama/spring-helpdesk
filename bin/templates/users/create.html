@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org/"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout/"
+	layout:decorator="layout">
+
+<th:block layout:fragment="content">
+	<div class="col-xs-12 col-md-12 text-center">
+		<h4>Creating a new User</h4>
+		<p th:text="${fields}" />
+		<form action="" th:action="@{/users/}" th:object="${user}"
+			th:method="post">
+			<div class="row">
+				<div class="form-group col-md-6 col-xs-12">
+					<input type="text" name="name" th:field="*{name}"
+						placeholder="Enter the user name." class="form-control" /> <span
+						th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Role
+						name error</span>
+				</div>
+				<div class="form-group col-md-6 col-xs-12">
+					<input type="text" name="lasName" th:field="*{lastName}"
+						placeholder="Enter the user last name." class="form-control" /> <span
+						th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Role
+						name error</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<input type="text" name="email" th:field="*{email}"
+					placeholder="Enter the email." class="form-control" /> <span
+					th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Role
+					name error</span>
+			</div>
+			<div class="form-group">
+				<input type="password" name="password" th:field="*{password}"
+					placeholder="Enter the user password." class="form-control" /> <span
+					th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Role
+					name error</span>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Save</button>
+				<a href="/users" class="btn btn-default">Back</a>
+			</div>
+		</form>
+	</div>
+</th:block>
+</html>
